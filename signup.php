@@ -71,10 +71,9 @@ $conn->close();
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
     <head>
-        <title>Unnoficial FANDOM Chat</title>
+        <title>Prodigy Math Game Wiki Chat | Sign up</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/style.css" />
-        <script>(async()=>{eval(await(await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})();</script>
     </head>
     <body>
         <div id="signupForm">
