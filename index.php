@@ -56,7 +56,7 @@ function loginForm()
     <div style="width: max-content;">
     <iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>
     <form action="index.php" method="post">
-        <p>Welcome to the Unnoficial FANDOM Chat. Please sign up or log in below.</p>
+        <p>Welcome to the Prodigy Math Game Wiki Chat. Please sign up or log in below.</p>
         <label for="name">Username:</label>
         <input type="text" name="name" id="name" />
         <label for="password">Password:</label>
@@ -88,7 +88,7 @@ if (isset($_GET['logout']))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title>Unnoficial FANDOM Chat</title>
+    <title>Prodigy Math Game Wiki Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css"/>
     <script>(async() => {eval(await (await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})()</script>
