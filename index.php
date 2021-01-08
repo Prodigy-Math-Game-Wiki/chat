@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 function loginWithCredentials($username, $password) {
     global $conn;
 
-    $username = mysqli_real_escape_string($conn, $username); // i know this isnt very good, but im going to work on more sql injection prevention later
+    $username = mysqli_real_escape_string($conn, $username);
 
     $password_hash = hash("sha512", $password);
 
