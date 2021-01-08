@@ -35,7 +35,7 @@ function get_ip_address() {
 function doesUserExist($username) {
     global $conn;
 
-    $username = mysqli_real_escape_string($conn, $username); // i know this isnt very good, but im going to work on more sql injection prevention later
+    $username = mysqli_real_escape_string($conn, $username);
 
     $query = mysqli_query($conn, "SELECT * FROM Users WHERE username='" . $username . "'");
 
