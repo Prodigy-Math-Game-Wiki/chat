@@ -1,99 +1,106 @@
-body {
-	font: 12px arial;
-	color: #222;
-	text-align: center;
-	padding: 15px;
-	font-family: sans-serif;
-	background-color: #dae0e6
-}
-
 form,
 p,
 span {
-	margin: 0;
-	padding: 0
+    margin: 0;
+    padding: 0;
 }
 
 input[type=text],
 input[type=password],
 button,
 input[type=submit] {
-	padding: 1%;
-	background: #fff;
-	border-radius: 5px;
-	border: 3px solid #eee
+    padding: 1%;
+    background: white;
+    border-radius: 5px;
+    border: 3px solid #eee;
 }
 
 input {
-	font: 12px arial
+    font: 12px arial;
 }
 
 a {
-	color: #1e90ff;
-	text-decoration: none
+    color: dodgerblue;
+    text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline
+    text-decoration: underline;
 }
 
 #wrapper,
 #loginform {
-	margin: 0 auto;
-	width: 100%;
-	overflow: none!important;
-	border: 3px solid #eee;
-	background-color: #fff
+    margin: 0 auto;
+    width: 100%;
+    overflow: none !important;
+    border: 3px solid #eee;
+    background-color: white;
 }
 
 #loginform {
-	padding-top: 18px
+    padding-top: 18px;
 }
 
 #loginform p {
-	margin: 5px
+    margin: 5px;
 }
 
-#chatbox {
-	text-align: left;
-	margin: 0 auto;
-	margin-bottom: 25px;
-	background: #fff;
-	height: 50%;
-	width: 100%;
-	overflow: auto;
-	background-color: #fff
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-#usermsg {
-	width: 395px
-}
-
-#submit {
-	width: 60px
-}
-
-.error {
-	color: red
-}
-
-#menu {
-	padding: 12.5px 25px;
-	position: sticky!important;
-	background-color: #fff!important;
-	top: 0!important
-}
-
-.welcome {
-	float: left
-}
-
-.nav {
-	float: right
+body {
+    height: 100vh;
+    font: 12px arial;
+    color: #222;
+    text-align: center;
+    padding: 15px;
+    font-family: sans-serif;
+    background-color: #DAE0E6;
 }
 
 .msgln {
-	margin: 0 0 2px;
-	padding: .5%;
-	border: 3px solid #eee
+    margin: 0 0 2px 0;
+    padding: 0.5%;
+    border: 3px solid #eee;
+}
+
+#chatbox {
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    background: #fff;
+    height: 50%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+}
+
+#usermsg {
+    width: 395px;
+}
+
+#submit {
+    width: 60px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+#menu {
+    padding: 12.5px 25px 12.5px 25px;
+    position: sticky !important;
+    background-color: white !important;
+    top: 0 !important;
+}
+
+.welcome {
+    float: left;
+}
+
+.nav {
+    float: right;
 }
