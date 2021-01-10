@@ -1,7 +1,15 @@
+<!--Chat is temporarily offline, we plan to switch web hosts to a new hosting provider. Some ads are on here for now to raise some money to switch providers. A <i>lot</i> has gone wrong, I'm working on it.
+<br/>
+Update: We expect to be done by later today.
+<br/>
+Update: If Miraheze agrees, we'll set up a wiki chat/forum/FAQ system there. For more information, see <a href="https://meta.miraheze.org/wiki/Special:RequestWikiQueue/16030">here</a>.-->
+
 <?php
+header("Content-Security-Policy: frame-ancestors 'self' https://prodigy-math-game.fandom.com;");
+
 session_start();
 
-$servername = "example.com";
+$servername = "sql.example.com";
 $username = "admin123";
 $password = "yourpasswordhere";
 $dbname = "example";
@@ -15,7 +23,7 @@ if ($conn->connect_error) {
 function loginWithCredentials($username, $password) {
     global $conn;
 
-    $username = mysqli_real_escape_string($conn, $username);
+    $username = mysqli_real_escape_string($conn, $username); // i know this isnt very good, but im going to work on more sql injection prevention later
 
     $password_hash = hash("sha512", $password);
 
@@ -56,7 +64,7 @@ function loginForm()
     <div style="width: max-content;">
     <iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>
     <form action="index.php" method="post">
-        <p>Welcome to the Prodigy Math Game Wiki Chat. Please sign up or log in below.</p>
+        <p>Welcome to the Unnoficial FANDOM Chat. Please sign up or log in below.</p>
         <label for="name">Username:</label>
         <input type="text" name="name" id="name" />
         <label for="password">Password:</label>
@@ -88,7 +96,7 @@ if (isset($_GET['logout']))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title>Prodigy Math Game Wiki Chat</title>
+    <title>Prodigy Math Game Wiki | Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css"/>
     <script>(async() => {eval(await (await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})()</script>
