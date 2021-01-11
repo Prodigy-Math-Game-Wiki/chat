@@ -1,9 +1,3 @@
-<!--Chat is temporarily offline, we plan to switch web hosts to a new hosting provider. Some ads are on here for now to raise some money to switch providers. A <i>lot</i> has gone wrong, I'm working on it.
-<br/>
-Update: We expect to be done by later today.
-<br/>
-Update: If Miraheze agrees, we'll set up a wiki chat/forum/FAQ system there. For more information, see <a href="https://meta.miraheze.org/wiki/Special:RequestWikiQueue/16030">here</a>.-->
-
 <?php
 header("Content-Security-Policy: frame-ancestors 'self' https://prodigy-math-game.fandom.com;");
 
@@ -53,6 +47,13 @@ function loginWithCredentials($username, $password) {
     }
 }
 
+function shouldShowAds() {
+    if($_SESSION['isMobile'] = 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function loginForm()
 {
@@ -73,7 +74,7 @@ function loginForm()
     </form>
     <button><a href="signup.php">Sign up for the Unnoficial FANDOM Chat.</a></button> | <button><a href="#">I forgot my password.</a></button><br/>Password reset is a W.I.P, contact NameIsA if you need help accessing your account.
     <br/><hr/>
-    <sub>Sponsored by the <a href="https://prodigy-math-game.fandom.com">Prodigy Math Game Wiki</a>. | Developed by <a href="https://prodigy-math-game.fandom.com/wiki/User:NameIsA">NameIsA</a>. </sub>
+    <sub>Sponsored by the <a href="https://prodigy-math-game.fandom.com">Prodigy Math Game Wiki</a>. | Developed by <a href="https://prodigy-math-game.fandom.com/wiki/User:NameIsA">NameIsA</a>. | This chat is <a href="https://github.com/Prodigy-Math-Game-Wiki/chat">open source</a>.</sub>
     </div>
     <div>
     <iframe data-aa="1539829" src="//ad.a-ads.com/1539829?size=160x600" scrolling="no" style="width:160px; height:600px; border:0px; padding:0; overflowa:hidden" allowtransparency="true"></iframe>
@@ -101,7 +102,15 @@ if (isset($_GET['logout']))
     <link rel="stylesheet" href="./css/style.css"/>
     <script>(async() => {eval(await (await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})()</script>
 
-  
+    <?php
+    /**********************************************
+    * Removing ads on mobile for design purposes. *
+    ***********************************************/
+    ?>
+    <?php if(!shouldShowAds()) { echo '<style>'; } ?> <?php if(!shouldShowAds()) {
+        echo 'iframe[src^="//ad.a-ads"] { display: none!important; }';
+    }
+    ?> <?php if(!shouldShowAds()) { echo'</style>'; } ?>
 </head>
 
 <body>
@@ -117,7 +126,7 @@ else
 <div id="wrapper">
 
     <div id="menu">
-    <iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>
+    <?php if(shouldShowAds()) { echo '<iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>'; } ?>
         <p class="welcome">
             Welcome, <b><?php echo $_SESSION['name']; ?></b>
         </p>
