@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("MySQL Error: " . $conn->connect_error);
 }
 
-
 function get_ip_address() {
     foreach (array(
         'HTTP_CLIENT_IP',
