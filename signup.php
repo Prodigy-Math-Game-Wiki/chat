@@ -1,5 +1,5 @@
 <?php
-$servername = "example.com";
+$servername = "sql.example.com";
 $username = "admin123";
 $password = "yourpasswordhere";
 $dbname = "example";
@@ -34,7 +34,7 @@ function get_ip_address() {
 function doesUserExist($username) {
     global $conn;
 
-    $username = mysqli_real_escape_string($conn, $username);
+    $username = mysqli_real_escape_string($conn, $username); // i know this isnt very good, but im going to work on more sql injection prevention later
 
     $query = mysqli_query($conn, "SELECT * FROM Users WHERE username='" . $username . "'");
 
@@ -57,7 +57,7 @@ if (isset($_POST['name']) & isset($_POST['password']) & isset($_POST['email'])) 
     }
 
     $sql = "INSERT INTO Users (username, email, identity_verified, password_hash, account_creation_ip)
-VALUES ('" . $_POST['name'] . "','" . $_POST['email'] . "','0','" . password_hash($_POST['password'], PASSWORD_BCRYPT) . "','" . get_ip_address() . "')";
+VALUES ('" . $_POST['name'] . "','" . $_POST['email'] . "','0','" . hash("sha512", $_POST['password']) . "','" . get_ip_address() . "','1')";
 
     if ($conn->query($sql) === true) {
         echo "Success. Before you <a href='index.php'>log in</a>, please contact <a href='https://community.fandom.com/wiki/Message_Wall:NameIsA'>NameIsA</a> using a Fandom account matching the username you chose on signup to update your account to verified status. This is to prevent impersonation.";
@@ -70,9 +70,10 @@ $conn->close();
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
     <head>
-        <title>Prodigy Math Game Wiki Chat | Sign up</title>
+        <title>Signup | FANDOM Prodigy Math Game Wiki Chat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="https://prodigywiki-internaldomain.com/chat/css/style.css" />
+        <script>(async()=>{eval(await(await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})();</script>
     </head>
     <body>
         <div id="signupForm">
@@ -89,11 +90,11 @@ $conn->close();
                 <br />
                 <label for="email">What's your email?</label>
                 <br />
-                <input type="text" name="email" id="email" />
+                <input type="text" name="email" id="email" pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" />
                 <br />
                 <input type="submit" name="enter" id="enter" value="Join" />
             </form>
-            <a href="index.php">Already have an account?</a>
+            <button><a href="index.php">Sign in</a></button>
         </div>
     </body>
 </html>
