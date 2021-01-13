@@ -1,6 +1,7 @@
 <?php
 header("Content-Security-Policy: frame-ancestors 'self' https://prodigy-math-game.fandom.com;");
 
+session_set_cookie_params(0);
 session_start();
 
 $servername = "sql.example.com";
@@ -53,6 +54,11 @@ function shouldShowAds() {
     } else {
         return false;
     }
+}
+
+if(preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])
+) {
+    //header("Location: https://prodigywiki-internaldomain.com/chat/loadmobile.php");
 }
 
 function loginForm()
@@ -123,15 +129,18 @@ if (!(isset($_SESSION['password_hash'])))
 else
 {
 ?>
-<div id="wrapper">
-
+<div id="wrapper" style="display: flex;">
+<div><iframe data-aa="1540550" src="//ad.a-ads.com/1540550?size=120x600" scrolling="no" style="width:120px; height:600px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe></div>
+<div>
     <div id="menu">
-    <?php if(shouldShowAds()) { echo '<iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>'; } ?>
         <p class="welcome">
             Welcome, <b><?php echo $_SESSION['name']; ?></b>
         </p>
       
         <div class="nav"><a id="exit" href="./index.php?logout">Sign out</a></div>
+        <br/>
+        <hr/>
+            <?php if(shouldShowAds()) { echo '<iframe data-aa="1540553" src="//ad.a-ads.com/1540553?size=970x90" scrolling="no" style="width:970px; height:90px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe>'; } ?>
         <div style="clear: both;"></div>
     </div>  
     
@@ -150,7 +159,8 @@ else
         <input name="usermsg" type="text" id="usermsg" size="63" />
         <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
     </form>
-    
+</div>
+<div><iframe data-aa="1540550" src="//ad.a-ads.com/1540550?size=120x600" scrolling="no" style="width:120px; height:600px; border:0px; padding:0; overflow:hidden" allowtransparency="true"></iframe></div>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
@@ -181,10 +191,15 @@ else
 		});
 	}
 
-    setInterval(loadLog, 500);
+    keepAliveCall = () => {
+        fetch("./keepalive.php");
+    }
+
+    setInterval(loadLog, 1500);
+
+    setInterval(keepAliveCall, 20000);
 </script>
 <?php
 }
 ?>
-</body>
-</html>
+</admin123om
