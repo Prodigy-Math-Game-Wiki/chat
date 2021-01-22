@@ -48,6 +48,22 @@ function loginWithCredentials($username, $password) {
     }
 }
 
+function isPremiumUser($username) {
+    $username = mysqli_real_escape_string($conn, $username); 
+
+    $query = mysqli_query($conn, "SELECT id FROM Users WHERE username = '$username' AND premium = '1'");
+
+    if (!$query) {
+        die('MySQL Error: ' . mysqli_error($conn));
+    }
+
+    if(mysqli_num_rows($query) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function shouldShowAds() {
     if($_SESSION['isMobile'] = 1) {
         return true;
@@ -117,6 +133,16 @@ if (isset($_GET['logout']))
         echo 'iframe[src^="//ad.a-ads"] { display: none!important; }';
     }
     ?> <?php if(!shouldShowAds()) { echo'</style>'; } ?>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TVN6K53DJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9TVN6K53DJ');
+    </script>
 </head>
 
 <body>
@@ -173,7 +199,7 @@ else
 	});
 
 	loadLog = () => {		
-		var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
+		//var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
         
 		$.ajax({
 			url: "log.html",
@@ -183,10 +209,12 @@ else
 
 				$("#chatbox").html(html);
 
-				var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
+				/*
+                var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
 				if(newscrollHeight > oldscrollHeight) {
 					$("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal');
-				}				
+				}	
+                */			
 		  	}
 		});
 	}
@@ -202,4 +230,5 @@ else
 <?php
 }
 ?>
-</admin123om
+</body>
+</html>
