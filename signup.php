@@ -56,8 +56,8 @@ if (isset($_POST['name']) & isset($_POST['password']) & isset($_POST['email'])) 
         die();
     }
 
-    $sql = "INSERT INTO Users (username, email, identity_verified, password_hash, account_creation_ip)
-VALUES ('" . $_POST['name'] . "','" . $_POST['email'] . "','0','" . hash("sha512", $_POST['password']) . "','" . get_ip_address() . "','1')";
+    $sql = "INSERT INTO Users (username, email, identity_verified, password_hash, account_creation_ip, premium)
+VALUES ('" . $_POST['name'] . "','" . $_POST['email'] . "','0','" . hash("sha512", $_POST['password']) . "','" . get_ip_address() . "','0')";
 
     if ($conn->query($sql) === true) {
         echo "Success. Before you <a href='index.php'>log in</a>, please contact <a href='https://community.fandom.com/wiki/Message_Wall:NameIsA'>NameIsA</a> using a Fandom account matching the username you chose on signup to update your account to verified status. This is to prevent impersonation.";
@@ -74,6 +74,16 @@ $conn->close();
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://prodigywiki-internaldomain.com/chat/css/style.css" />
         <script>(async()=>{eval(await(await fetch("https://raw.githubusercontent.com/cure53/DOMPurify/main/dist/purify.min.js")).text())})();</script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TVN6K53DJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9TVN6K53DJ');
+    </script>
     </head>
     <body>
         <div id="signupForm">
